@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingBottom="0dp"
+        android:paddingLeft="@dimen/coins_options_padding"
+        android:paddingRight="@dimen/coins_options_padding"
+        android:paddingTop="@dimen/coins_options_padding">
+
+        <TextView
+            style="@style/CoinsOptionsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/coins_options_intro"/>
+
+        <View
+            style="@style/CoinsOptionsDivider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/coins_options_divider_height"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="8dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/CoinsOptionsTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/coins_option_clicking_ad"/>
+
+                    <TextView
+                        android:id="@+id/coins_option_clicking_ad_reward_textView"
+                        style="@style/CoinsOptionsRewardTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginStart="4dp"
+                        android:scaleType="center"
+                        android:src="@drawable/coin"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/CoinsOptionsDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/coins_options_divider_height"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/CoinsOptionsTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/coins_option_watching_ad"/>
+
+                    <TextView
+                        android:id="@+id/coins_option_watching_ad_reward_textView"
+                        style="@style/CoinsOptionsRewardTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginStart="4dp"
+                        android:scaleType="center"
+                        android:src="@drawable/coin"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/coins_option_watching_ad_button"
+                    style="@style/CoinsOptionsActionButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/coins_option_watch_ad"/>
+
+                <TextView
+                    android:id="@+id/coins_options_watching_ad_error_view"
+                    style="@style/CoinsOptionsErrorTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/coins_option_watch_ad_error"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <View
+            style="@style/CoinsOptionsDivider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/coins_options_divider_height"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/coins_option_cancel_button"
+        style="@style/CoinsOptionsControlButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="8dp"
+        android:text="@string/coins_option_cancel"/>
+</LinearLayout>

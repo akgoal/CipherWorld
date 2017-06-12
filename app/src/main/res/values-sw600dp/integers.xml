@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="level_ciphers_grid_row_length">6</integer>
+
+    <!-- Cipher screen settings. -->
+    <integer name="cipher_symbols_grid_row_length">12</integer>
+    <integer name="cipher_question_panel_weight">1</integer>
+    <integer name="cipher_symbols_panel_weight">5</integer>
+
+    <!-- Loading screen settings. -->
+    <integer name="loading_title_grid_row_padding">3</integer>
+    <integer name="loading_title_grid_row_right_offset">1</integer>
+    <integer name="loading_loading_grid_row_padding">6</integer>
+
+</resources>

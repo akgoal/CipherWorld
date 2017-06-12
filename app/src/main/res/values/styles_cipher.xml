@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CipherBackImageButton" parent="LevelControlImageButton">
+        <item name="android:src">@drawable/levels</item>
+    </style>
+
+    <style name="CipherHintLetterImageButton" parent="LevelControlImageButton">
+        <item name="android:src">@drawable/open_symbol</item>
+    </style>
+
+    <style name="CipherHintCheckLettersImageButton" parent="LevelControlImageButton">
+        <item name="android:src">@drawable/check_letters</item>
+    </style>
+
+    <style name="CipherTitleTextView">
+        <item name="android:background">@drawable/cipher_title_bg</item>
+        <item name="android:textSize">@dimen/cipher_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/cipherTitleText</item>
+    </style>
+
+    <style name="CipherQuestionTextView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textSize">@dimen/cipher_question_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/cipherQuestionText</item>
+    </style>
+
+    <style name="CipherQuestionPanel">
+        <item name="android:background">@drawable/cipher_question_box</item>
+    </style>
+
+    <style name="CipherSolvedPanel">
+        <item name="android:src">@drawable/solved_stamp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:alpha">0.9</item>
+    </style>
+
+
+    <style name="CipherSymbolItem">
+        <item name="android:background">@drawable/cipher_symbol_bg</item>
+    </style>
+
+    <style name="CipherSymbolLetterTextView">
+        <item name="android:background">@drawable/cipher_symbol_letter_bg</item>
+        <item name="android:textSize">@dimen/symbol_letter_text_size</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/cipherSymbolLetterText</item>
+    </style>
+
+    <style name="CipherSymbolHighlightView">
+        <item name="android:background">@drawable/cipher_symbol_highlight</item>
+    </style>
+
+    <style name="CipherSymbolDelimiterView">
+        <item name="android:background">@android:color/black</item>
+    </style>
+
+
+    <style name="CipherKeyboardItemView">
+        <item name="android:background">@drawable/keyboard_letter_bg</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/keyboard_letter_text_size</item>
+        <item name="android:textColor">@color/keyboardLetterText</item>
+    </style>
+
+</resources>

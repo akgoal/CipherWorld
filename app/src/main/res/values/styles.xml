@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+
+        <!-- If you are using revision 22.1 please use just windowNoTitle. Without android: -->
+        <item name="windowNoTitle">true</item>
+        <!-- We will be using the toolbar so no need to show ActionBar -->
+        <item name="windowActionBar">false</item>
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="TextViewAsButton">
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <style name="SignatureTextView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textSize">@dimen/signature_text_size</item>
+        <item name="android:textStyle">italic|bold</item>
+        <item name="android:textColor">@color/signatureText</item>
+    </style>
+
+</resources>

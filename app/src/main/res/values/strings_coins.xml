@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="coins_options_intro">You can earn coins by solving cipher and
+        completing levels.\nYou can also get coins by:</string>
+
+    <string name="coins_option_clicking_ad">Clicking on the ad</string>
+    <string name="coins_option_watching_ad">Watching an ad</string>
+
+    <string name="coins_option_watch_ad">WATCH AD</string>
+
+    <string name="coins_option_watch_ad_error">Unable to display the ad. Please try again later.</string>
+
+    <string name="coins_option_cancel">CANCEL</string>
+</resources>

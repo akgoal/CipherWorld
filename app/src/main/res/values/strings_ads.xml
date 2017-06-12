@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ad_app_id">@string/ad_app_test_id</string>
+    <string name="ad_banner_unit_id">@string/ad_banner_unit_test_id</string>
+    <string name="ad_video_unit_id">@string/ad_video_unit_test_id</string>
+
+
+    <string name="ad_app_test_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="ad_app_real_id">ca-app-pub-6729925689981190~9317883063</string>
+
+    <string name="ad_banner_unit_test_id">"ca-app-pub-3940256099942544/6300978111"</string>
+    <string name="ad_banner_unit_real_id">"ca-app-pub-6729925689981190/6877290669"</string>
+
+    <string name="ad_video_unit_test_id">"ca-app-pub-3940256099942544/5224354917"</string>
+    <string name="ad_video_unit_real_id">"ca-app-pub-6729925689981190/8354023865"</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@android:color/transparent"/>
+
+    <stroke android:color="@color/cipherTitleText"
+        android:width="@dimen/cipher_title_bg_stroke_width"/>
+
+    <corners android:radius="@dimen/cipher_title_corner_radius"/>
+</shape>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CoinsDisplayPanel">
+        <item name="android:background">@drawable/button_borderless_bg</item>
+    </style>
+
+    <style name="CoinsDisplayTextView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textSize">@dimen/coins_display_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/coinsDisplayText</item>
+    </style>
+
+    <style name="CoinsOptionsPanel">
+        <item name="android:background">@drawable/coins_options_panel_bg</item>
+    </style>
+
+    <style name="CoinsOptionsTextView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textSize">@dimen/coins_options_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/coinsOptionsText</item>
+    </style>
+
+    <style name="CoinsOptionsActionButton" parent="TextViewAsButton">
+        <item name="android:background">@drawable/button_borderful_bg</item>
+        <item name="android:textSize">@dimen/coins_options_action_button_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/coinsOptionsActionButtonText</item>
+    </style>
+
+    <style name="CoinsOptionsRewardTextView" parent="CoinsDisplayTextView">
+        <item name="android:textSize">@dimen/coins_options_reward_text_size</item>
+        <item name="android:textColor">@color/coinsDisplayTextDark</item>
+    </style>
+
+    <style name="CoinsOptionsErrorTextView" parent="CoinsOptionsTextView">
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">@dimen/coins_options_error_text_size</item>
+    </style>
+
+
+    <style name="CoinsOptionsDivider">
+        <item name="android:layout_height">@dimen/coins_options_divider_height</item>
+        <item name="android:background">@color/coinsOptionsDivider</item>
+    </style>
+
+    <style name="CoinsOptionsControlButton" parent="TextViewAsButton">
+        <item name="android:background">@drawable/button_borderless_bg</item>
+        <item name="android:textSize">@dimen/coins_options_control_button_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/coinsOptionsControlButtonText</item>
+    </style>
+
+    <style name="CoinsDialog">
+        <item name="android:windowEnterAnimation">@anim/dialog_in_leftdown_alpha_size</item>
+        <item name="android:windowExitAnimation">@anim/dialog_out_rightup_alpha_size</item>
+    </style>
+</resources>

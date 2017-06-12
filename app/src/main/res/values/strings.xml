@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Cipher World</string>
+
+    <string name="loading_title_left">CIPHER</string>
+    <string name="loading_title_right">WORLD</string>
+    <string name="loading_loading">LOADING</string>
+
+    <string name="signature">Created by Dmitry Akishin</string>
+
+    <string name="previous_level">Previous level</string>
+    <string name="next_level">Next level</string>
+    <string name="level_num">Level %1$d</string>
+
+    <string name="level_lock">Solve %1$d more ciphers\nto unlock this level</string>
+    <string name="level_lock_one_to_solve">Solve 1 more cipher\nto unlock this level</string>
+
+    <string name="cipher_levels">Levels</string>
+    <string name="cipher_title">%1$d-%2$02d</string>
+    <string name="cipher_hint_letter">Open a symbol</string>
+    <string name="cipher_hint_check_letters">Check letters</string>
+
+    <string name="keyboard_escape">esc</string>
+    <string name="keyboard_delete">del</string>
+
+    <string name="hint_cancel">CANCEL</string>
+    <string name="hint_open_symbol_desc">Open the symbol?</string>
+    <string name="hint_open_symbol_not_enough_coins">Not enough coins\nto open the symbol</string>
+    <string name="hint_open_symbol_max_symbols_opened">Maximum number of symbols are already opened for this cipher</string>
+    <string name="hint_open_symbol_confirm">OPEN</string>
+
+    <string name="hint_check_letters_desc">Check which letters are correct?</string>
+    <string name="hint_check_letters_not_enough_coins">Not enough coins\nto check the letters.</string>
+    <string name="hint_check_letters_no_letters">There are no letters to check.</string>
+    <string name="hint_check_letters_confirm">CHECK</string>
+
+</resources>

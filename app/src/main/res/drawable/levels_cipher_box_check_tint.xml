@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/levelCipherBoxCheckTint"/>
+
+    <padding
+        android:bottom="@dimen/levels_cipher_box_padding"
+        android:left="@dimen/levels_cipher_box_padding"
+        android:right="@dimen/levels_cipher_box_padding"
+        android:top="@dimen/levels_cipher_box_padding"/>
+
+    <corners android:radius="@dimen/levels_cipher_box_corner_radius"/>
+</shape>

@@ -1,0 +1,51 @@
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_marginTop">16dp</dimen>
+    <dimen name="activity_vertical_marginBottom">16dp</dimen>
+
+    <dimen name="button_bg_corner_radius">2dp</dimen>
+
+    <!-- Levels screen settings. -->
+
+    <dimen name="levels_screen_margin_top">8dp</dimen>
+
+    <dimen name="levels_cipher_box_corner_radius">8dp</dimen>
+    <dimen name="levels_cipher_box_padding">2dp</dimen>
+    <dimen name="levels_cipher_box_text_size">20sp</dimen>
+
+    <dimen name="level_title_text_size">26sp</dimen>
+
+    <dimen name="level_lock_text_size">24sp</dimen>
+
+
+    <!-- Cipher screen settings. -->
+
+    <dimen name="cipher_title_text_size">20sp</dimen>
+    <dimen name="cipher_title_corner_radius">5dp</dimen>
+    <dimen name="cipher_title_bg_stroke_width">0dp</dimen>
+
+    <dimen name="cipher_question_text_size">18sp</dimen>
+    <dimen name="cipher_question_box_corner_radius">16dp</dimen>
+    <dimen name="cipher_question_box_padding">8dp</dimen>
+
+    <dimen name="symbol_box_corner_radius">5dp</dimen>
+    <dimen name="symbol_letter_text_size">18sp</dimen>
+
+    <dimen name="keyboard_letter_text_size">18sp</dimen>
+    <dimen name="keyboard_letter_bg_corner_radius">4dp</dimen>
+
+    <!-- Hint panel settings. -->
+    <dimen name="hint_panel_text_size">18sp</dimen>
+    <dimen name="hint_panel_control_text_size">18sp</dimen>
+    <dimen name="hint_panel_price_text_size">@dimen/coins_display_text_size</dimen>
+
+    <!-- Loading screen settings. -->
+    <dimen name="loading_screen_title_letter_text_size">22sp</dimen>
+    <dimen name="loading_screen_loading_letter_text_size">@dimen/symbol_letter_text_size</dimen>
+
+    <dimen name="signature_text_size">14sp</dimen>
+
+    <!-- Ad views settings. -->
+    <dimen name="ad_banner_margin_vertic">0dp</dimen>
+    <dimen name="ad_banner_margin_horiz">0dp</dimen>
+</resources>

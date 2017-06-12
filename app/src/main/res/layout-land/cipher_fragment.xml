@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/cipher_screen_background_view"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:clickable="true"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/levels_screen_tint"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_marginBottom"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/levels_screen_margin_top">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/cipher_screen_levels_imageButton"
+                style="@style/CipherBackImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:contentDescription="@string/cipher_levels"/>
+
+            <TextView
+                android:id="@+id/cipher_screen_cipher_title_textView"
+                style="@style/CipherTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="invisible"/>
+
+            <LinearLayout
+                android:id="@+id/cipher_screen_hint_control_panel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/cipher_screen_hint_letter_imageButton"
+                    style="@style/CipherHintLetterImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/cipher_hint_letter"/>
+
+                <ImageButton
+                    android:id="@+id/cipher_screen_hint_check_letters_imageButton"
+                    style="@style/CipherHintCheckLettersImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:contentDescription="@string/cipher_hint_check_letters"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="@integer/cipher_question_panel_weight">
+
+                <RelativeLayout
+                    android:id="@+id/cipher_screen_cipher_question_panel"
+                    style="@style/CipherQuestionPanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ScrollView
+                        android:id="@+id/cipher_screen_cipher_question_scrollView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="@dimen/cipher_question_box_padding"
+                        android:layout_marginTop="@dimen/cipher_question_box_padding"
+                        android:fadeScrollbars="false"
+                        android:overScrollMode="never"
+                        android:paddingLeft="@dimen/cipher_question_box_padding"
+                        android:paddingRight="@dimen/cipher_question_box_padding"
+                        android:scrollbarStyle="outsideOverlay"
+                        android:scrollbars="vertical">
+
+                        <TextView
+                            android:id="@+id/cipher_screen_cipher_question_textView"
+                            style="@style/CipherQuestionTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"/>
+                    </ScrollView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cipher_screen_keyboard_panel"
+                    style="@style/CipherQuestionPanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/cipher_question_box_padding"
+                    android:layout_marginTop="@dimen/cipher_question_box_padding"
+                    android:paddingLeft="@dimen/cipher_question_box_padding"
+                    android:paddingRight="@dimen/cipher_question_box_padding">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/cipher_keyboard_recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:fadeScrollbars="false"
+                        android:overScrollMode="never"
+                        android:scrollbarStyle="outsideOverlay"
+                        android:scrollbars="vertical"/>
+                </RelativeLayout>
+
+                <include
+                    android:id="@+id/cipher_screen_hint_panel"
+                    layout="@layout/cipher_hint_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/cipher_question_box_padding"
+                    android:layout_marginTop="@dimen/cipher_question_box_padding"/>
+
+                <ImageView
+                    android:id="@+id/cipher_screen_solved_panel"
+                    style="@style/CipherSolvedPanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"/>
+            </FrameLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/cipher_symbols_recyclerView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_weight="@integer/cipher_symbols_panel_weight"
+                android:fadeScrollbars="false"
+                android:overScrollMode="never"
+                android:scrollbarStyle="outsideOverlay"
+                android:scrollbars="vertical"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

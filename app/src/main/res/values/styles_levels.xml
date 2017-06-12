@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LevelTitleTextView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textSize">@dimen/level_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/levelsTitleText</item>
+    </style>
+
+    <style name="LevelControlImageButton">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:scaleType">center</item>
+    </style>
+
+    <style name="NextLevelImageButton" parent="LevelControlImageButton">
+        <item name="android:src">@drawable/arrow_right</item>
+    </style>
+
+    <style name="PrevLevelImageButton" parent="LevelControlImageButton">
+        <item name="android:src">@drawable/arrow_left</item>
+    </style>
+
+    <style name="LevelLockImageView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@drawable/lock</item>
+    </style>
+
+    <style name="LevelLockTextView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textSize">@dimen/level_lock_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/levelsLockText</item>
+    </style>
+
+    <style name="LevelCipherItemButton">
+        <item name="android:background">@drawable/levels_cipher_box_bg</item>
+        <item name="android:textSize">@dimen/levels_cipher_box_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/levelCipherBoxText</item>
+    </style>
+
+    <style name="LevelCipherItemSolvedImageView">
+        <item name="android:src">@drawable/check</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:background">@drawable/levels_cipher_box_check_tint</item>
+    </style>
+</resources>

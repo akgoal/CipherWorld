@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cipher_hint_panel"
+    style="@style/CipherHintPanel"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        style="@style/CipherQuestionPanel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ScrollView
+            android:id="@+id/cipher_hint_panel_scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:fadeScrollbars="false"
+            android:overScrollMode="never"
+            android:paddingLeft="@dimen/cipher_question_box_padding"
+            android:paddingRight="@dimen/cipher_question_box_padding"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical">
+
+            <TextView
+                android:id="@+id/cipher_hint_panel_textView"
+                style="@style/CipherHintDescriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
+        </ScrollView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/cipher_question_box_padding"
+        android:paddingRight="@dimen/cipher_question_box_padding">
+
+        <TextView
+            android:id="@+id/cipher_hint_panel_cancel_textView"
+            style="@style/CipherHintControlButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hint_cancel"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/cipher_hint_panel_price_display_panel"
+                style="@style/CipherHintPricePanel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp">
+
+                <TextView
+                    android:id="@+id/cipher_hint_panel_price_display_textView"
+                    style="@style/CipherHintPriceTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginStart="2dp"
+                    android:scaleType="center"
+                    android:src="@drawable/coin"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/cipher_hint_panel_confirm_textView"
+            style="@style/CipherHintControlButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hint_open_symbol_confirm"/>
+
+    </LinearLayout>
+
+</LinearLayout>

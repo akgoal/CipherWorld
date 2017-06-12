@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Settings for displaying coins. -->
+
+    <dimen name="coins_display_panel_margin">8dp</dimen>
+    <dimen name="coins_display_panel_padding_horiz">8dp</dimen>
+    <dimen name="coins_display_panel_padding_vertic">4dp</dimen>
+    <dimen name="coins_display_text_size">18sp</dimen>
+
+    <dimen name="coins_options_padding">20dp</dimen>
+    <dimen name="coins_options_bg_corner_radius">8dp</dimen>
+    <dimen name="coins_options_text_size">18sp</dimen>
+    <dimen name="coins_options_reward_text_size">@dimen/coins_display_text_size</dimen>
+    <dimen name="coins_options_error_text_size">14sp</dimen>
+    <dimen name="coins_options_action_button_text_size">16sp</dimen>
+    <dimen name="coins_options_button_bg_corner_radius">2dp</dimen>
+    <dimen name="coins_options_control_button_text_size">16sp</dimen>
+    <dimen name="coins_options_divider_height">1dp</dimen>
+</resources>

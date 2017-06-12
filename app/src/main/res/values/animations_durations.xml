@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Durations of animations in milliseconds. -->
+    <integer name="screen_transition_anim_dur">350</integer>
+
+    <integer name="dialog_transition_anim_dur">200</integer>
+
+    <integer name="coins_display_change_anim_dur">400</integer>
+
+
+    <integer name="cipher_symbol_highlight_anim_dur">700</integer>
+    <integer name="cipher_symbol_turn_over_anim_dur">400</integer>
+
+    <integer name="cipher_keyboard_slide_anim_dur">500</integer>
+    <integer name="cipher_keyboard_hint_symbol_anim_offset">300</integer>
+
+    <integer name="cipher_solved_stamp_anim_dur">400</integer>
+
+    <integer name="loading_screen_delay">1750</integer>
+    <integer name="loading_letter_turn_over_anim_dur">2000</integer>
+    <integer name="loading_letter_turn_over_anim_offset">400</integer>
+
+    <integer name="ad_banner_reveal_anim_dur">200</integer>
+
+</resources>

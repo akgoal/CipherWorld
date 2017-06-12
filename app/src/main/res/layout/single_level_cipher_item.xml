@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.deakishin.cipherworld.gui.SquareFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 android:id="@+id/single_level_cipher_item_panel"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="wrap_content"
+                                                 android:padding="8dp">
+
+    <Button
+        android:id="@+id/single_level_cipher_item_button"
+        style="@style/LevelCipherItemButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stateListAnimator="@null"/>
+
+    <ImageView
+        android:id="@+id/single_level_cipher_item_solved_view"
+        style="@style/LevelCipherItemSolvedImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="2dp"/>
+
+</com.deakishin.cipherworld.gui.SquareFrameLayout>

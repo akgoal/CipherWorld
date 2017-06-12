@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CipherHintPanel" parent="CipherQuestionPanel"/>
+
+    <style name="CipherHintDescriptionTextView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textSize">@dimen/hint_panel_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/hintPanelText</item>
+    </style>
+
+    <style name="CipherHintControlButton" parent="TextViewAsButton">
+        <item name="android:background">@drawable/button_borderless_bg</item>
+        <item name="android:textSize">@dimen/hint_panel_control_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/hintPanelControlButtonText</item>
+    </style>
+
+    <style name="CipherHintPricePanel">
+        <item name="android:background">@drawable/cipher_hint_price_panel_bg</item>
+    </style>
+
+    <style name="CipherHintPriceTextView" parent="CoinsDisplayTextView">
+        <item name="android:textSize">@dimen/hint_panel_price_text_size</item>
+        <item name="android:textColor">@color/coinsDisplayTextDark</item>
+    </style>
+</resources>

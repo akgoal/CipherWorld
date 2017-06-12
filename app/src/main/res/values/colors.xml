@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">@color/accentA200</color>
+
+    <color name="accentA200">#FF4081</color>
+    <color name="accentA400">#F50057</color>
+    <color name="accent500">#E91E63</color>
+    <color name="accent700">#C2185B</color>
+
+    <color name="selectedColor">#b0daeb</color>
+
+    <color name="buttonBorderlessBgNormal">@android:color/transparent</color>
+    <color name="buttonBorderlessBgPressed">#33999999</color>
+    <color name="buttonBorderfulBgNormal">@color/accent500</color>
+    <color name="buttonBorderfulBgPressed">@color/accent700</color>
+
+    <color name="levelsScreenTintGradientTop">#00000000</color>
+    <color name="levelsScreenTintGradientBottom">#80000000</color>
+
+    <color name="levelsTitleText">#eeeeee</color>
+
+    <color name="levelsLockText">#bbbbbb</color>
+
+    <color name="levelCipherBoxBg">#eeeeee</color>
+    <color name="levelCipherBoxBgSelected">@color/selectedColor</color>
+    <color name="levelCipherBoxText">#444444</color>
+    <color name="levelCipherBoxCheckTint">#20888888</color>
+
+    <!-- Background colors for different levels. The order is the same as the order of the levels. -->
+    <!-- Material 300-400.-->
+    <string-array name="levelBackgroundArray">
+        <item>#42A5F5</item>
+        <item>#26A69A</item>
+        <item>#78909C</item>
+
+        <item>#9575CD</item>
+        <item>#E57373</item>
+
+        <item>#A1887F</item>
+        <item>#FF8A65</item>
+        <item>#81C784</item>
+
+        <item>#FFB74D</item>
+        <item>#BA68C8</item>
+
+    </string-array>
+    <color name="levelsDefaultBackground">#42A5F5</color>
+    <!-- Status bar colors for different levels. -->
+    <!-- Material 600-700.-->
+    <string-array name="levelStatusBarArray">
+        <item>#1976D2</item>
+        <item>#00796B</item>
+        <item>#455A64</item>
+
+        <item>#5E35B1</item>
+        <item>#E53935</item>
+
+        <item>#6D4C41</item>
+        <item>#F4511E</item>
+        <item>#43A047</item>
+
+        <item>#FB8C00</item>
+        <item>#8E24AA</item>
+    </string-array>
+
+    <!-- Cipher screen settings. -->
+    <color name="cipherTitleText">@color/levelsTitleText</color>
+    <color name="cipherTitleBg">#888888</color>
+
+    <color name="cipherQuestionText">#222222</color>
+    <color name="cipherQuestionBoxBg">#eeeeee</color>
+    <color name="cipherSolved">#55CC55</color>
+
+    <color name="cipherSymbolBoxBg">#ffffff</color>
+    <color name="cipherSymbolLetterBg">#3F51B5</color>
+    <color name="cipherSymbolLetterText">#eeeeee</color>
+    <color name="cipherSymbolLetterText1">#eeeeee</color>
+    <color name="cipherSymbolLetterText2">#40C4FF</color>
+    <color name="cipherOpenedSymbolLetterBg">@color/accentA400</color>
+    <color name="cipherSymbolHighlight">#80FF6E40</color>
+
+    <color name="keyboardLetterText">#333333</color>
+    <color name="keyboardOccupiedLetterText">#80333333</color>
+    <color name="keyboardCurrentLetterText">@color/cipherSymbolLetterBg</color>
+    <color name="keyboardLetterBgPressed">#20999999</color>
+
+    <!-- Hint panel settings. -->
+    <color name="hintPanelText">@color/keyboardLetterText</color>
+    <color name="hintPanelControlButtonText">@color/cipherOpenedSymbolLetterBg</color>
+    <color name="hintPanelPricePanelBg">@android:color/transparent</color>
+
+    <!-- Coins display settings. -->
+    <color name="coinsDisplayText">#FFEA00</color>
+    <color name="coinsDisplayTextDark">#FF9800</color>
+
+    <color name="coinsOptionsBg">#eeeeee</color>
+    <color name="coinsOptionsText">#222222</color>
+    <color name="coinsOptionsActionButtonText">#eeeeee</color>
+    <color name="coinsOptionsControlButtonText">@color/cipherOpenedSymbolLetterBg</color>
+    <color name="coinsOptionsDivider">#20000000</color>
+
+
+    <!-- Loading screen settings. -->
+    <color name="loadingBackground">#42A5F5</color>
+    <color name="loadingStatusBar">#1976D2</color>
+    <color name="loadingTitleItemTextOne">#222222</color>
+    <color name="loadingTitleItemTextTwo">@color/cipherSymbolLetterText</color>
+    <color name="loadingLoadingItemTextOne">@color/loadingTitleItemTextOne</color>
+    <color name="loadingLoadingItemTextTwo">@color/loadingTitleItemTextTwo</color>
+
+    <color name="signatureText">#BB888888</color>
+</resources>
