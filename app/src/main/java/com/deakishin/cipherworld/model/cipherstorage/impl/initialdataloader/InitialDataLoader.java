@@ -7,9 +7,10 @@ public interface InitialDataLoader {
     /**
      * Loads initial data.
      *
+     * @param version Version of the data to load (starting from 1).
      * @param handler Object for handling loaded data items.
      */
-    void loadData(LoadedItemHandler handler);
+    void loadData(int version, LoadedItemHandler handler);
 
     /**
      * Interface for handling loaded data items.

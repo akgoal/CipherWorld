@@ -18,11 +18,10 @@ public class LocalDbHelper extends SQLiteOpenHelper {
     private final String TAG = getClass().getSimpleName();
 
     // Number of levels.
-    static final int LEVEL_COUNT = 5;
+    static final int LEVEL_COUNT = 6;
 
     // DB version.
-    // TODO Fix database version.
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 2;
     // Db name.
     private static final String DATABASE_NAME = "LocalDb.db";
 
@@ -57,10 +56,14 @@ public class LocalDbHelper extends SQLiteOpenHelper {
         Log.i(TAG, "Creating local database");
         db.execSQL(SQL_CREATE_CIPHERS);
 
-        // TODO Remove demo cipher.
-        loadDemoCipher(db);
+        loadCiphers(1, db);
 
-        mInitialDataLoader.loadData(new InitialDataLoader.LoadedItemHandler() {
+        onUpgrade(db, 1, DATABASE_VERSION);
+    }
+
+    // Loads ciphers in the given db for the given version.
+    private void loadCiphers(int version, final SQLiteDatabase db) {
+        mInitialDataLoader.loadData(version, new InitialDataLoader.LoadedItemHandler() {
             @Override
             public void onCipherLoaded(int cipherId, int level, int number, String description, String solution, String openedLetters) {
                 ContentValues cv = new ContentValues();
@@ -78,10 +81,10 @@ public class LocalDbHelper extends SQLiteOpenHelper {
                 db.insert(LocalDbContract.Ciphers.TABLE_NAME, null, cv);
             }
         });
-
     }
 
     // Loads ciphers for testing.
+    @SuppressWarnings("unused")
     private void loadStubCiphers(SQLiteDatabase db) {
         Random rand = new Random();
         for (int i = 0; i < 100; i++) {
@@ -107,6 +110,7 @@ public class LocalDbHelper extends SQLiteOpenHelper {
     }
 
     // Loads demonstration cipher.
+    @SuppressWarnings("unused")
     private void loadDemoCipher(SQLiteDatabase db) {
         for (int i = 0; i < 15; i++) {
             ContentValues cv = new ContentValues();
@@ -123,12 +127,14 @@ public class LocalDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SQL_DELETE_CIPHERS);
-        onCreate(db);
+        for (int version = oldVersion + 1; version <= newVersion; version++) {
+            loadCiphers(version, db);
+        }
     }
 
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        onUpgrade(db, oldVersion, newVersion);
+        db.execSQL(SQL_DELETE_CIPHERS);
+        onCreate(db);
     }
 }

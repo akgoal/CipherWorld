@@ -1,7 +1,6 @@
 package com.deakishin.cipherworld.model.cipherstorage.impl;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;

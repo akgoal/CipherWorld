@@ -45,9 +45,6 @@ public class CoinsManagerImpl implements CoinsManager {
         mSettings = settings;
 
         mCoins = mSettings.loadCoins();
-
-        // TODO Remove initial coins.
-        mCoins = 9000;
     }
 
     // Saves number of coins.
