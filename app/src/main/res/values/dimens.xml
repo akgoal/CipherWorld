@@ -34,6 +34,8 @@
     <dimen name="keyboard_letter_text_size">18sp</dimen>
     <dimen name="keyboard_letter_bg_corner_radius">4dp</dimen>
 
+    <dimen name="hint_button_margin">8dp</dimen>
+
     <!-- Hint panel settings. -->
     <dimen name="hint_panel_text_size">18sp</dimen>
     <dimen name="hint_panel_control_text_size">18sp</dimen>

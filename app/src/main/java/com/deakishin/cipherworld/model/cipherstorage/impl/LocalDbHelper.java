@@ -21,7 +21,7 @@ public class LocalDbHelper extends SQLiteOpenHelper {
     static final int LEVEL_COUNT = 6;
 
     // DB version.
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     // Db name.
     private static final String DATABASE_NAME = "LocalDb.db";
 
@@ -38,7 +38,6 @@ public class LocalDbHelper extends SQLiteOpenHelper {
                     LocalDbContract.Ciphers.COLUMN_NAME_SOLVED + INT_TYPE + COMMA_SEP +
                     LocalDbContract.Ciphers.COLUMN_NAME_OPENED_LETTERS + TEXT_TYPE + COMMA_SEP +
                     LocalDbContract.Ciphers.COLUMN_NAME_CURRENT_SOLUTION + TEXT_TYPE + " )";
-
 
     private static final String SQL_DELETE_CIPHERS =
             "DROP TABLE IF EXISTS " + LocalDbContract.Ciphers.TABLE_NAME;
@@ -128,7 +127,29 @@ public class LocalDbHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         for (int version = oldVersion + 1; version <= newVersion; version++) {
-            loadCiphers(version, db);
+            upgrade(db, version);
+        }
+    }
+
+    /**
+     * Upgrades database to new version.
+     *
+     * @param db      Database to upgrade.
+     * @param version Version number.
+     */
+    private void upgrade(SQLiteDatabase db, int version) {
+        switch (version) {
+            case 2:
+                // Load new ciphers.
+                loadCiphers(2, db);
+                break;
+            case 3:
+                // Change ciphers table to include column for an indicator of delimiters being opened.
+                db.execSQL("ALTER TABLE " + LocalDbContract.Ciphers.TABLE_NAME +
+                        " ADD COLUMN " + LocalDbContract.Ciphers.COLUMN_NAME_DELIMITERS_OPENED + INT_TYPE);
+                break;
+            default:
+                break;
         }
     }
 

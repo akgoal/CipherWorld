@@ -61,14 +61,30 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/cipher_hint_letter"/>
 
-                <ImageButton
-                    android:id="@+id/cipher_screen_hint_check_letters_imageButton"
-                    style="@style/CipherHintCheckLettersImageButton"
+                <LinearLayout
+                    android:id="@+id/cipher_screen_hint_overall_panel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp"
-                    android:contentDescription="@string/cipher_hint_check_letters"/>
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/cipher_screen_hint_check_letters_imageButton"
+                        style="@style/CipherHintCheckLettersImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/hint_button_margin"
+                        android:layout_marginStart="@dimen/hint_button_margin"
+                        android:contentDescription="@string/cipher_hint_check_letters"/>
+
+                    <ImageButton
+                        android:id="@+id/cipher_screen_hint_open_delimiters_imageButton"
+                        style="@style/CipherHintOpenDelimitersImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/hint_button_margin"
+                        android:layout_marginStart="@dimen/hint_button_margin"
+                        android:contentDescription="@string/cipher_hint_open_delimiters"/>
+                </LinearLayout>
 
             </LinearLayout>
 

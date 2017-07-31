@@ -72,6 +72,11 @@ public interface MvpCipherPresenter {
     void onHintControlCheckLettersClicked();
 
     /**
+     * Invoked when the Open delimiters hint is selected.
+     */
+    void onHintControlOpenDelimitersClicked();
+
+    /**
      * Invoked when the hint is canceled.
      */
     void onHintCanceled();

@@ -13,6 +13,10 @@
         <item name="android:src">@drawable/check_letters</item>
     </style>
 
+    <style name="CipherHintOpenDelimitersImageButton" parent="LevelControlImageButton">
+        <item name="android:src">@drawable/reveal_spaces</item>
+    </style>
+
     <style name="CipherTitleTextView">
         <item name="android:background">@drawable/cipher_title_bg</item>
         <item name="android:textSize">@dimen/cipher_title_text_size</item>

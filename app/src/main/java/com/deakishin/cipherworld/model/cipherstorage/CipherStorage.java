@@ -52,6 +52,13 @@ public interface CipherStorage {
     void setCipherCurrentSolution(int cipherId, String currentSolution);
 
     /**
+     * Marks the cipher with the given id as a cipher with opened delimiters.
+     *
+     * @param cipherId Cipher's id.
+     */
+    void setDelimitersOpened(int cipherId);
+
+    /**
      * @return Total number of levels.
      */
     int getLevelCount();

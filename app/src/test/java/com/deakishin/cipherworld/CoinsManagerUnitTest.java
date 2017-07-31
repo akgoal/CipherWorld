@@ -66,9 +66,10 @@ public class CoinsManagerUnitTest {
         assertEquals(coins, mManager.getCoins());
         verify(mListener).onCoinsChanged(coins);
 
-        for (int level = 1; level < 5; level++) {
-            mManager.addCoinsForSolvingCipher(level, true);
-            coins += mManager.getRewardForSolvingCipher(level);
+        boolean openedLetters = false;
+        for (int level = 1; level < 5; level++, openedLetters = !openedLetters) {
+            mManager.addCoinsForSolvingCipher(level, true, openedLetters);
+            coins += mManager.getRewardForSolvingCipher(level, openedLetters);
             coins += mManager.getRewardForSolvingLevel(level);
             verify(mListener).onCoinsChanged(coins);
         }

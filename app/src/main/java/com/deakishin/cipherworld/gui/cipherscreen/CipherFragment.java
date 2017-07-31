@@ -1,5 +1,6 @@
 package com.deakishin.cipherworld.gui.cipherscreen;
 
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.LinearInterpolator;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -79,6 +79,8 @@ public class CipherFragment extends Fragment implements MvpCipherView, OnBackPre
     ImageButton mHintSymbolButton;
     @BindView(R.id.cipher_screen_hint_check_letters_imageButton)
     ImageButton mHintCheckLettersButton;
+    @BindView(R.id.cipher_screen_hint_open_delimiters_imageButton)
+    ImageButton mHintOpenDelimitersButton;
 
     @BindView(R.id.cipher_screen_hint_panel)
     View mHintPanel;
@@ -159,10 +161,13 @@ public class CipherFragment extends Fragment implements MvpCipherView, OnBackPre
     private boolean mKeyboardShown = false;
     @BindInt(R.integer.cipher_keyboard_hint_symbol_anim_offset)
     int mHintSymbolAnimOffset;
+    private static final float HINT_BUTTON_MIN_ALPHA = 0.1f;
     private ObjectAnimator mHintSymbolButtonAnimator;
     private boolean mHintSymbolShown = false;
     private ObjectAnimator mHintCheckLettersButtonAnimator;
     private boolean mHintCheckLettersShown = false;
+    private ObjectAnimator mHintOpenDelimitersButtonAnimator;
+    private boolean mHintOpenDelimitersShown = false;
     private ObjectAnimator mHintPanelAnimator;
     private boolean mHintPanelShown = false;
 
@@ -301,6 +306,11 @@ public class CipherFragment extends Fragment implements MvpCipherView, OnBackPre
         mPresenter.onHintControlCheckLettersClicked();
     }
 
+    @OnClick(R.id.cipher_screen_hint_open_delimiters_imageButton)
+    public void onHintOpenDelimitersClicked() {
+        mPresenter.onHintControlOpenDelimitersClicked();
+    }
+
     @Override
     public void setAnimateChanges(boolean toAnimate) {
         mAnimateChanges = toAnimate;
@@ -414,7 +424,7 @@ public class CipherFragment extends Fragment implements MvpCipherView, OnBackPre
             }
         } else {
             // mHintSymbolButton.setVisibility(toShow ? View.VISIBLE : View.INVISIBLE);
-            mHintSymbolButton.setAlpha(toShow ? 1f : 0f);
+            mHintSymbolButton.setAlpha(toShow ? 1f : HINT_BUTTON_MIN_ALPHA);
         }
         mHintSymbolShown = toShow;
         mHintSymbolButton.setEnabled(toShow);
@@ -486,7 +496,7 @@ public class CipherFragment extends Fragment implements MvpCipherView, OnBackPre
                 mHintCheckLettersButtonAnimator.reverse();
             }
         } else {
-            mHintCheckLettersButton.setAlpha(toShow ? 1f : 0f);
+            mHintCheckLettersButton.setAlpha(toShow ? 1f : HINT_BUTTON_MIN_ALPHA);
         }
         mHintCheckLettersShown = toShow;
         mHintCheckLettersButton.setEnabled(toShow);
@@ -515,6 +525,37 @@ public class CipherFragment extends Fragment implements MvpCipherView, OnBackPre
 
     @Override
     public void closeHintCheckLettersPanel() {
+        showHintPanel(false);
+    }
+
+    @Override
+    public void setHintOpenDelimitersShown(boolean toShow) {
+        if (mAnimateChanges) {
+            if (toShow == mHintOpenDelimitersShown) {
+                return;
+            }
+            if (mHintOpenDelimitersButtonAnimator == null || !mHintOpenDelimitersButtonAnimator.isRunning()) {
+                mHintOpenDelimitersButtonAnimator = constructHintButtonAnimator(toShow, mHintOpenDelimitersButton);
+                mHintOpenDelimitersButtonAnimator.start();
+            } else {
+                mHintOpenDelimitersButtonAnimator.reverse();
+            }
+        } else {
+            mHintOpenDelimitersButton.setAlpha(toShow ? 1f : HINT_BUTTON_MIN_ALPHA);
+        }
+        mHintOpenDelimitersShown = toShow;
+        mHintOpenDelimitersButton.setEnabled(toShow);
+    }
+
+    @Override
+    public void showHintOpenDelimitersConfirmation() {
+        setHintPanel(R.string.hint_open_delimiters_desc, R.string.hint_open_delimiters_confirm, -1);
+
+        showHintPanel(true);
+    }
+
+    @Override
+    public void closeHintOpenDelimitersPanel() {
         showHintPanel(false);
     }
 
@@ -579,8 +620,8 @@ public class CipherFragment extends Fragment implements MvpCipherView, OnBackPre
     // toShow - if the animator must show it or hide it.
     // hintButton - Button to animate.
     private ObjectAnimator constructHintButtonAnimator(boolean toShow, ImageButton hintButton) {
-        float start = toShow ? 0 : 1;
-        float finish = 1 - start;
+        float start = toShow ? HINT_BUTTON_MIN_ALPHA : 1;
+        float finish = 1 + HINT_BUTTON_MIN_ALPHA - start;
         ObjectAnimator animator = ObjectAnimator.ofFloat(hintButton, "alpha",
                 start, finish);
         animator.setStartDelay(mHintSymbolAnimOffset);

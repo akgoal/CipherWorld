@@ -158,6 +158,25 @@ public interface MvpCipherView {
      */
     void closeHintCheckLettersPanel();
 
+
+    /**
+     * Shows/hides the Open delimiters hint button.
+     *
+     * @param toShow True if the button must be shown,
+     *               false if it must be hidden.
+     */
+    void setHintOpenDelimitersShown(boolean toShow);
+
+    /**
+     * Shows confirmation to use the Open delimiters hint.
+     */
+    void showHintOpenDelimitersConfirmation();
+
+    /**
+     * Closes panel with the Open delimiters hint options.
+     */
+    void closeHintOpenDelimitersPanel();
+
     /**
      * Exits the view.
      */

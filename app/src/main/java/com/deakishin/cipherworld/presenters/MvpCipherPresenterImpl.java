@@ -43,6 +43,10 @@ public class MvpCipherPresenterImpl implements MvpCipherPresenter {
     @State
     boolean mCheckLettersHintSelected = false;
 
+    // Indicates that the Open delimiters hint option was selected.
+    @State
+    boolean mOpenDelimitersHintSelected = false;
+
     // Cipher is solved.
     private boolean mSolved;
 
@@ -73,23 +77,32 @@ public class MvpCipherPresenterImpl implements MvpCipherPresenter {
                     setOverallHintsShown(true);
                     showHintCheckLettersPanel();
                 } else {
-                    closeHintCheckLettersPanel();
-                    if (mSymbolId > -1) {
-                        mView.setSelectedSymbol(mSymbolId);
-                        showViewKeyboardAndSymbolHintsControls();
-                        setOverallHintsShown(false);
-                        if (mOpenSymbolHintSelected) {
-                            showOpenSymbolHintPanel();
-                        } else {
-                            closeHintSymbolPanel();
-                        }
-                    } else {
+                    if (mOpenDelimitersHintSelected) {
                         closeKeyboardAndSymbolHints();
+
                         setOverallHintsShown(true);
+                        showHintOpenDelimitersPanel();
+                    } else {
+                        closeHintCheckLettersPanel();
+                        closeHintOpenDelimitersPanel();
+                        if (mSymbolId > -1) {
+                            mView.setSelectedSymbol(mSymbolId);
+                            showViewKeyboardAndSymbolHintsControls();
+                            setOverallHintsShown(false);
+                            if (mOpenSymbolHintSelected) {
+                                showOpenSymbolHintPanel();
+                            } else {
+                                closeHintSymbolPanel();
+                            }
+                        } else {
+                            closeKeyboardAndSymbolHints();
+                            setOverallHintsShown(true);
+                        }
                     }
                 }
             } else {
                 closeHintCheckLettersPanel();
+                closeHintOpenDelimitersPanel();
                 closeKeyboardAndSymbolHints();
                 setOverallHintsShown(false);
             }
@@ -98,6 +111,7 @@ public class MvpCipherPresenterImpl implements MvpCipherPresenter {
     }
 
     // Shows View's keyboard and symbol-specific hint buttons.
+
     private void showViewKeyboardAndSymbolHintsControls() {
         if (mView == null) return;
 
@@ -122,23 +136,31 @@ public class MvpCipherPresenterImpl implements MvpCipherPresenter {
         }
     }
 
-    // Closes Hint symbol panel.
+    // Closes the Hint symbol panel.
     private void closeHintSymbolPanel() {
         mOpenSymbolHintSelected = false;
         mCheckLettersHintSelected = false;
         if (mView != null) mView.closeHintSymbolPanel();
     }
 
-    // Closes Check letter hint panel.
+    // Closes the Check letter hint panel.
     private void closeHintCheckLettersPanel() {
         mCheckLettersHintSelected = false;
         if (mView != null) mView.closeHintCheckLettersPanel();
     }
 
+    // Closes the Open delimiters hint panel.
+    private void closeHintOpenDelimitersPanel() {
+        mOpenDelimitersHintSelected = false;
+        if (mView != null) mView.closeHintOpenDelimitersPanel();
+    }
+
     // Shows/hides overall, not symbol-specific hints.
     private void setOverallHintsShown(boolean toShow) {
-        if (mView != null)
+        if (mView != null) {
             mView.setHintCheckLettersShown(toShow && mCipherManager.getLettersCount() > 0);
+            mView.setHintOpenDelimitersShown(toShow && !mCipherManager.getCipherInfo().isDelimiterOpened());
+        }
     }
 
     // Updates view.
@@ -151,14 +173,19 @@ public class MvpCipherPresenterImpl implements MvpCipherPresenter {
         mView.setSolved(mSolved);
         mView.setSymbols(mCipherManager.getSymbols());
 
-        if (mSolved) {
-            mView.setDelimiterPositions(mCipherManager.getDelimiters());
-        }
+        updateDelimiters();
 
         updateViewSymbols();
     }
 
-    // Update View's symbols info.
+    // Updates View's delimiters.
+    private void updateDelimiters(){
+        if (mSolved || mCipherManager.getCipherInfo().isDelimiterOpened()) {
+            mView.setDelimiterPositions(mCipherManager.getDelimiters());
+        }
+    }
+
+    // Updates View's symbols info.
     private void updateViewSymbols() {
         if (mView == null) return;
 
@@ -197,6 +224,10 @@ public class MvpCipherPresenterImpl implements MvpCipherPresenter {
         } else {
             if (mCheckLettersHintSelected) {
                 closeHintCheckLettersPanel();
+            }
+
+            if (mOpenDelimitersHintSelected) {
+                closeHintOpenDelimitersPanel();
             }
 
             if (mView != null) {
@@ -249,9 +280,10 @@ public class MvpCipherPresenterImpl implements MvpCipherPresenter {
 
             boolean levelIsSolved = mLevelsManager.isLevelSolved(level);
 
-            mCoinsManager.addCoinsForSolvingCipher(level, levelIsSolved);
+            mCoinsManager.addCoinsForSolvingCipher(level, levelIsSolved, mCipherManager.getCipherInfo().isDelimiterOpened());
 
             closeHintCheckLettersPanel();
+            closeHintOpenDelimitersPanel();
             closeKeyboardAndSymbolHints();
             setOverallHintsShown(false);
         }
@@ -271,6 +303,10 @@ public class MvpCipherPresenterImpl implements MvpCipherPresenter {
     @Override
     public void onBackClicked() {
         if (mCheckLettersHintSelected) {
+            closeHintCheckLettersPanel();
+            return;
+        }
+        if (mOpenDelimitersHintSelected) {
             closeHintCheckLettersPanel();
             return;
         }
@@ -344,6 +380,20 @@ public class MvpCipherPresenterImpl implements MvpCipherPresenter {
         mCheckLettersHintSelected = true;
     }
 
+    // Show View's Open delimiters hint panel.
+    private void showHintOpenDelimitersPanel() {
+        mOpenDelimitersHintSelected = false;
+
+        if (mSymbolId >= 0) {
+            closeKeyboardAndSymbolHints();
+        }
+
+        if (mView != null && !mCipherManager.getCipherInfo().isDelimiterOpened()) {
+            mView.showHintOpenDelimitersConfirmation();
+            mOpenDelimitersHintSelected = true;
+        }
+    }
+
     @Override
     public void onHintControlSymbolClicked() {
         if (mOpenSymbolHintSelected) {
@@ -358,7 +408,22 @@ public class MvpCipherPresenterImpl implements MvpCipherPresenter {
         if (mCheckLettersHintSelected) {
             closeHintCheckLettersPanel();
         } else {
+            if (mOpenDelimitersHintSelected) {
+                closeHintOpenDelimitersPanel();
+            }
             showHintCheckLettersPanel();
+        }
+    }
+
+    @Override
+    public void onHintControlOpenDelimitersClicked() {
+        if (mOpenDelimitersHintSelected) {
+            closeHintOpenDelimitersPanel();
+        } else {
+            if (mCheckLettersHintSelected) {
+                closeHintCheckLettersPanel();
+            }
+            showHintOpenDelimitersPanel();
         }
     }
 
@@ -368,6 +433,8 @@ public class MvpCipherPresenterImpl implements MvpCipherPresenter {
             closeHintSymbolPanel();
         } else if (mCheckLettersHintSelected) {
             closeHintCheckLettersPanel();
+        } else if (mOpenDelimitersHintSelected) {
+            closeHintOpenDelimitersPanel();
         }
     }
 
@@ -377,6 +444,12 @@ public class MvpCipherPresenterImpl implements MvpCipherPresenter {
             int lettersCount = mCipherManager.checkLetters();
             mCoinsManager.spendCoins(CoinsManager.Product.CHECK_LETTERS, lettersCount);
             closeHintCheckLettersPanel();
+            setOverallHintsShown(true);
+        } else if (mOpenDelimitersHintSelected) {
+            mCipherManager.openDelimiters();
+            updateDelimiters();
+            closeHintOpenDelimitersPanel();
+            setOverallHintsShown(true);
         } else if (mOpenSymbolHintSelected) {
             if (mCipherManager.openSymbol(mSymbolId)) {
                 mCoinsManager.spendCoins(CoinsManager.Product.OPEN_SYMBOL);

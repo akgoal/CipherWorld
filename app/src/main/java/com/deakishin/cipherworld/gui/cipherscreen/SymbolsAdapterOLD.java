@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
 /**
  * Adapter for the list/grid of ciphers on the level.
  */
-class SymbolsAdapter extends RecyclerView.Adapter<SymbolsAdapter.ViewHolder> {
+class SymbolsAdapterOLD extends RecyclerView.Adapter<SymbolsAdapterOLD.ViewHolder> {
 
     private final String TAG = getClass().getSimpleName();
 
@@ -43,13 +43,8 @@ class SymbolsAdapter extends RecyclerView.Adapter<SymbolsAdapter.ViewHolder> {
     // Opened symbols.
     private List<Integer> mOpenedSymbols = new ArrayList<>();
 
-    // Flag indicating that delimiters are added to the list of symbols.
-    private boolean mDelimitersAdded = false;
-
-    /**
-     * Id for a symbol that represents a delimiter.
-     */
-    private static final int DELIMITER_SYMBOL_ID = -10;
+    // Positions of delimiters.
+    private List<Integer> mDelimiterPositions = new ArrayList<>();
 
     // Animations.
     private Animation mHighlightAnimation;
@@ -96,7 +91,7 @@ class SymbolsAdapter extends RecyclerView.Adapter<SymbolsAdapter.ViewHolder> {
      * @param turnOverAnimationDuration Duration of symbols turning-over animation
      *                                  (in milliseconds).
      */
-    SymbolsAdapter(Context context, OnSymbolClickListener listener, int turnOverAnimationDuration) {
+    SymbolsAdapterOLD(Context context, OnSymbolClickListener listener, int turnOverAnimationDuration) {
         mListener = listener;
         mContext = context.getApplicationContext();
         mHighlightAnimation = AnimationUtils.loadAnimation(mContext, R.anim.cipher_symbol_highlight);
@@ -107,11 +102,11 @@ class SymbolsAdapter extends RecyclerView.Adapter<SymbolsAdapter.ViewHolder> {
      * Sets symbols to display.
      */
     void setSymbols(List<CipherSymbol> symbols) {
-        mSymbols.clear();
-        if (symbols != null) {
-            mSymbols.addAll(symbols);
+        if (symbols == null) {
+            mSymbols.clear();
+        } else {
+            mSymbols = symbols;
         }
-
         notifyDataSetChanged();
     }
 
@@ -119,11 +114,11 @@ class SymbolsAdapter extends RecyclerView.Adapter<SymbolsAdapter.ViewHolder> {
      * Sets opened symbols.
      */
     void setOpenedSymbols(List<Integer> openedSymbols) {
-        mOpenedSymbols.clear();
-        if (openedSymbols != null) {
-            mOpenedSymbols.addAll(openedSymbols);
+        if (openedSymbols == null) {
+            mOpenedSymbols.clear();
+        } else {
+            mOpenedSymbols = openedSymbols;
         }
-
         notifyDataSetChanged();
     }
 
@@ -182,27 +177,11 @@ class SymbolsAdapter extends RecyclerView.Adapter<SymbolsAdapter.ViewHolder> {
      * Sets list of positions after which delimiters must be shown.
      */
     void setDelimiterPositions(List<Integer> delimiterPositions) {
-        if (mDelimitersAdded) {
-            // Remove delimiter symbols.
-            for (int i = mSymbols.size() - 1; i >= 0; i--) {
-                CipherSymbol symbol = mSymbols.get(i);
-                if (symbol.getId() == DELIMITER_SYMBOL_ID) {
-                    mSymbols.remove(i);
-                }
-            }
-            mDelimitersAdded = false;
+        if (delimiterPositions == null) {
+            mDelimiterPositions.clear();
+        } else {
+            mDelimiterPositions.addAll(delimiterPositions);
         }
-
-        if (delimiterPositions != null) {
-            // Add delimiter symbols to the list of symbols.
-            for (int i = mSymbols.size() - 1; i >= 0; i--) {
-                if (delimiterPositions.contains(i)) {
-                    mSymbols.add(i + 1, new CipherSymbol(DELIMITER_SYMBOL_ID, null));
-                }
-            }
-            mDelimitersAdded = true;
-        }
-
         notifyDataSetChanged();
     }
 
@@ -247,18 +226,26 @@ class SymbolsAdapter extends RecyclerView.Adapter<SymbolsAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         final CipherSymbol symbol = mSymbols.get(position);
 
-        Integer id = symbol.getId();
-
-        if (id == DELIMITER_SYMBOL_ID) {
-            // Display the symbol as a delimiter.
-            Log.d(TAG, "Displaying symbol as a delimiter. Id: " + id);
-            holder.mSymbolItemPanel.setVisibility(View.INVISIBLE);
-            return;
+        int letterTextColor = holder.mLetterTextColor;
+        if (!mDelimiterPositions.isEmpty()) {
+            // Change text color of every second word divided by delimiters.
+            int delCount = 0; // Number of delimiters before the symbol.
+            for (Integer delimiter : mDelimiterPositions) {
+                if (position > delimiter) {
+                    delCount++;
+                }
+            }
+            if (delCount % 2 == 0) {
+                letterTextColor = holder.mLetterTextColor1;
+            } else {
+                letterTextColor = holder.mLetterTextColor2;
+            }
         }
-
-        holder.mSymbolItemPanel.setVisibility(View.VISIBLE);
+        holder.mLetterTextView.setTextColor(letterTextColor);
 
         Character letter = mLetters == null ? null : mLetters.get(symbol.getId());
+
+        Integer id = symbol.getId();
 
         boolean symbolIsToTurnOver = false;
         if (mSymbolsToTurnOver.contains(id)) {

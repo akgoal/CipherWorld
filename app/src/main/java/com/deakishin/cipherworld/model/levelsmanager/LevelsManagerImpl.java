@@ -49,8 +49,9 @@ public class LevelsManagerImpl implements LevelsManager {
 
     @Override
     public int getCiphersToSolveCount(int level) {
-        // return -1;
-        return mCipherToSolveCount[level - 1];
+        // TODO Fix.
+         return -1;
+        //return mCipherToSolveCount[level - 1];
     }
 
     @Override

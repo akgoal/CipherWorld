@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Durations of animations in milliseconds. -->
-    <integer name="screen_transition_anim_dur">350</integer>
+    <integer name="screen_transition_anim_dur">250</integer>
 
     <integer name="dialog_transition_anim_dur">200</integer>
 

@@ -20,8 +20,8 @@ public class CoinsManagerImpl implements CoinsManager {
      * Prices.
      */
     private static class PRICES {
-        static final int OPEN_SYMBOL = 80;
-        static final int CHECK_LETTER = 20;
+        static final int OPEN_SYMBOL = 60;
+        static final int CHECK_LETTER = 15;
     }
 
     /**
@@ -30,6 +30,8 @@ public class CoinsManagerImpl implements CoinsManager {
     private static class REWARDS {
         static final int CIPHER_SOLVING = 25;
         static final double CIPHER_SOLVING_FACTOR = 0.2;
+
+        static final double CIPHER_SOLVING_OPENED_DELIMITERS_PENALTY_FACTOR = 0.4;
 
         static final int LEVEL_SOLVING = 150;
         static final double LEVEL_SOLVING_FACTOR = 0.2;
@@ -45,6 +47,9 @@ public class CoinsManagerImpl implements CoinsManager {
         mSettings = settings;
 
         mCoins = mSettings.loadCoins();
+
+        // TODO Remove.
+        mCoins = 2000;
     }
 
     // Saves number of coins.
@@ -126,8 +131,8 @@ public class CoinsManagerImpl implements CoinsManager {
     }
 
     @Override
-    public void addCoinsForSolvingCipher(int level, boolean levelIsSolved) {
-        int reward = getRewardForSolvingCipher(level);
+    public void addCoinsForSolvingCipher(int level, boolean levelIsSolved, boolean delimitersOpened) {
+        int reward = getRewardForSolvingCipher(level, delimitersOpened);
 
         mCoins += reward;
 
@@ -140,9 +145,13 @@ public class CoinsManagerImpl implements CoinsManager {
     }
 
     @Override
-    public int getRewardForSolvingCipher(int level) {
-        return REWARDS.CIPHER_SOLVING
+    public int getRewardForSolvingCipher(int level, boolean delimitersOpened) {
+        int rew = REWARDS.CIPHER_SOLVING
                 + (int) (REWARDS.CIPHER_SOLVING * REWARDS.CIPHER_SOLVING_FACTOR) * (level - 1);
+        if (delimitersOpened) {
+            return (int) (rew * REWARDS.CIPHER_SOLVING_OPENED_DELIMITERS_PENALTY_FACTOR);
+        }
+        return rew;
     }
 
     @Override

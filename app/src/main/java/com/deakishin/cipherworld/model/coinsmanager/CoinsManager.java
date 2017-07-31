@@ -106,20 +106,23 @@ public interface CoinsManager {
     /**
      * Adds coins for solving a cipher.
      *
-     * @param level         Level on which the cipher was solved.
-     * @param levelIsSolved True if all ciphers on the level are solved.
-     *                      In this case, bonus coins will be added.
-     *                      Number of this bonus points can be obtained with {@link #getRewardForSolvingLevel(int)} method.
+     * @param level            Level on which the cipher was solved.
+     * @param levelIsSolved    True if all ciphers on the level are solved.
+     *                         In this case, bonus coins will be added.
+     *                         Number of this bonus coins can be obtained with {@link #getRewardForSolvingLevel(int)} method.
+     * @param delimitersOpened True if delimiters are opened for the solved cipher. In this case,
+     *                         number of reward coins is decreased.
      */
-    void addCoinsForSolvingCipher(int level, boolean levelIsSolved);
+    void addCoinsForSolvingCipher(int level, boolean levelIsSolved, boolean delimitersOpened);
 
     /**
      * Gets reward for solving a cipher.
      *
-     * @param level Number of the level that the cipher belongs to.
+     * @param level            Number of the level that the cipher belongs to.
+     * @param delimitersOpened True if delimiters are opened for the cipher.
      * @return Number of reward coins.
      */
-    int getRewardForSolvingCipher(int level);
+    int getRewardForSolvingCipher(int level, boolean delimitersOpened);
 
     /**
      * Adds coins for solving a level completely.

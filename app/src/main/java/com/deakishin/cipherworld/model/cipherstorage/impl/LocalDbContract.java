@@ -22,5 +22,6 @@ class LocalDbContract {
         static final String COLUMN_NAME_SOLVED = "solved";
         static final String COLUMN_NAME_OPENED_LETTERS = "opened_letters";
         static final String COLUMN_NAME_CURRENT_SOLUTION = "current_solution";
+        static final String COLUMN_NAME_DELIMITERS_OPENED = "delimiters_opened";
     }
 }

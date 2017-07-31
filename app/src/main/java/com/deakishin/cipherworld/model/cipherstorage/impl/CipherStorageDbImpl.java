@@ -12,6 +12,7 @@ import com.deakishin.cipherworld.model.cipherstorage.CipherStorage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Implementation of the cipher storage interface that uses a local database for persistence.
@@ -93,7 +94,8 @@ public class CipherStorageDbImpl implements CipherStorage {
                 LocalDbContract.Ciphers.COLUMN_NAME_SOLUTION,
                 LocalDbContract.Ciphers.COLUMN_NAME_SOLVED,
                 LocalDbContract.Ciphers.COLUMN_NAME_OPENED_LETTERS,
-                LocalDbContract.Ciphers.COLUMN_NAME_CURRENT_SOLUTION
+                LocalDbContract.Ciphers.COLUMN_NAME_CURRENT_SOLUTION,
+                LocalDbContract.Ciphers.COLUMN_NAME_DELIMITERS_OPENED
         };
         String selection = LocalDbContract.Ciphers._ID + " = ?";
         String[] selectionArgs = new String[]{Integer.toString(cipherId)};
@@ -108,6 +110,8 @@ public class CipherStorageDbImpl implements CipherStorage {
         int solvedIdx = c.getColumnIndex(LocalDbContract.Ciphers.COLUMN_NAME_SOLVED);
         int openedLettersIdx = c.getColumnIndex(LocalDbContract.Ciphers.COLUMN_NAME_OPENED_LETTERS);
         int currentSolutionIdx = c.getColumnIndex(LocalDbContract.Ciphers.COLUMN_NAME_CURRENT_SOLUTION);
+
+        int delimitersOpenedIdx = c.getColumnIndex(LocalDbContract.Ciphers.COLUMN_NAME_DELIMITERS_OPENED);
 
         if (c.moveToFirst()) {
             cipher = new CipherInfo();
@@ -124,6 +128,8 @@ public class CipherStorageDbImpl implements CipherStorage {
             cipher.setOpenedLetters(c.getString(openedLettersIdx));
 
             cipher.setCurrentSolution(c.getString(currentSolutionIdx));
+
+            cipher.setDelimiterOpened(!c.isNull(delimitersOpenedIdx) && c.getInt(delimitersOpenedIdx) > 0);
         }
         c.close();
 
@@ -169,6 +175,19 @@ public class CipherStorageDbImpl implements CipherStorage {
 
         ContentValues cv = new ContentValues();
         cv.put(LocalDbContract.Ciphers.COLUMN_NAME_CURRENT_SOLUTION, currentSolution);
+
+        mSQLiteDatabase.update(LocalDbContract.Ciphers.TABLE_NAME, cv, selection, selectionArgs);
+    }
+
+    @Override
+    public void setDelimitersOpened(int cipherId) {
+        Log.i(TAG, "Executing query for setting delimitersOpened to true for a cipher. Cipher's id: " + cipherId);
+
+        String selection = LocalDbContract.Ciphers._ID + " = ?";
+        String[] selectionArgs = new String[]{Integer.toString(cipherId)};
+
+        ContentValues cv = new ContentValues();
+        cv.put(LocalDbContract.Ciphers.COLUMN_NAME_DELIMITERS_OPENED, 1);
 
         mSQLiteDatabase.update(LocalDbContract.Ciphers.TABLE_NAME, cv, selection, selectionArgs);
     }
